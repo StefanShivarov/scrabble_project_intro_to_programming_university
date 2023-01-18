@@ -7,11 +7,52 @@ void printMenu()
     std::cout << "Choose an activity: ";
 }
 
-void openMainMenu(){
+void startGame()
+{
+}
+
+void openSettings()
+{
+}
+
+void addWordToDictionary()
+{
+}
+
+void handleIncorrectInput()
+{
+}
+
+void openMainMenu()
+{
     printMenu();
 }
 
-int main(){
+int main()
+{
 
     openMainMenu();
+
+    int menuOption;
+    std::cin >> menuOption;
+
+    switch (menuOption)
+    {
+
+    case 1:
+        startGame();
+        break;
+    case 2:
+        openSettings();
+        break;
+    case 3:
+        addWordToDictionary();
+        break;
+    case 4:
+        std::cout << "Exiting game...";
+        break;
+    default:
+        handleIncorrectInput();
+        break;
+    }
 }
