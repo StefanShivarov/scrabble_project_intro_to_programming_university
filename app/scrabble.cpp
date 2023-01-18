@@ -17,10 +17,22 @@ void startGame()
 
 void changeLettersPerRoundAmount()
 {
+    std::cout << "Enter new letters amount: ";
+    int newLettersAmount;
+    std::cin >> newLettersAmount;
+    lettersPerRoundAmount = newLettersAmount;
+    std::cout << "\nSuccessfully set new letters per round amount to " << lettersPerRoundAmount << ". Back to main menu..." << std::endl;
+    openMainMenu();
 }
 
 void changeRoundsAmount()
 {
+    std::cout << "Enter new rounds amount: ";
+    int newRoundsAmount;
+    std::cin >> newRoundsAmount;
+    roundsAmount = newRoundsAmount;
+    std::cout << "\nSuccessfully set new rounds amonut to " << roundsAmount << ". Back to main menu..." << std::endl;
+    openMainMenu();
 }
 
 void openSettings()
