@@ -1,5 +1,7 @@
 #include <iostream>
 
+void openMainMenu();
+
 void printMenu()
 {
     std::cout << "Welcome to Scrabble!\n-------------------------------\nMain Menu\n-------------------------------\n";
@@ -21,6 +23,8 @@ void addWordToDictionary()
 
 void handleIncorrectInput()
 {
+    std::cout << "Wrong command! No such option in the menu!" << std::endl;
+    openMainMenu();
 }
 
 void openMainMenu()
