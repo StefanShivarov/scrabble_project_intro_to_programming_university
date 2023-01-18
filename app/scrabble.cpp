@@ -1,5 +1,7 @@
 #include <iostream>
 
+int lettersPerRoundAmount = 10, roundsAmount = 10;
+
 void openMainMenu();
 
 void printMenu()
@@ -13,8 +15,39 @@ void startGame()
 {
 }
 
+void changeLettersPerRoundAmount()
+{
+}
+
+void changeRoundsAmount()
+{
+}
+
 void openSettings()
 {
+    std::cout << "-------------------------------\nSettings\n-------------------------------\n";
+    std::cout << "1. Change letters per round amount\n2. Change rounds amount\n3. Back to main menu.\n";
+    std::cout << "Choose an option: ";
+    int settingsOption;
+    std::cin >> settingsOption;
+
+    switch (settingsOption)
+    {
+
+    case 1:
+        changeLettersPerRoundAmount();
+        break;
+    case 2:
+        changeRoundsAmount();
+        break;
+    case 3:
+        openMainMenu();
+        break;
+    default:
+        std::cout << "Wrong command! No such option in the menu! Try again." << std::endl;
+        openSettings();
+        break;
+    }
 }
 
 void addWordToDictionary()
