@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 
 int lettersPerRoundAmount = 10, roundsAmount = 10;
 
@@ -62,13 +63,22 @@ void openSettings()
     }
 }
 
-void addWordToDictionary()
-{
-}
-
 void handleIncorrectInput()
 {
     std::cout << "Wrong command! No such option in the menu!" << std::endl;
+    openMainMenu();
+}
+
+void addWordToDictionary()
+{
+    std::fstream addWordStream;
+    addWordStream.open("dictionary.txt", std::fstream::out | std::fstream::app);
+    std::cout << "Type a word to add to the dictionary: " << std::endl;
+    std::string word;
+    std::cin >> word;
+    addWordStream << word << "\n";
+    addWordStream.close();
+    std::cout << word << " successfully added to dictionary! Back to main menu..." << std::endl;
     openMainMenu();
 }
 
