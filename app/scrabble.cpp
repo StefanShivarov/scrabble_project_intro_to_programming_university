@@ -12,6 +12,43 @@ void printMenu()
     std::cout << "Choose an activity: ";
 }
 
+bool areSameWords(std::string word1, std::string word2)
+{
+    if (word1.length() != word2.length())
+    {
+        return false;
+    }
+
+    for (int i = 0; i < word1.length(); i++)
+    {
+        if (word1[i] != word2[i])
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+bool dictionaryContainsWord(std::string word)
+{
+
+    std::fstream readDictionaryFile;
+    readDictionaryFile.open("dictionary.txt", std::fstream::in);
+    std::string buffer;
+    while (std::getline(readDictionaryFile, buffer))
+    {
+        if (areSameWords(word, buffer))
+        {
+            readDictionaryFile.close();
+            return true;
+        }
+    }
+
+    readDictionaryFile.close();
+    return false;
+}
+
 void startGame()
 {
 }
