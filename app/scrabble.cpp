@@ -1,9 +1,47 @@
 #include <iostream>
 #include <fstream>
+#include <time.h>
+#include <string.h>
 
 int lettersPerRoundAmount = 10, roundsAmount = 10;
+const int lowestAsciiLetterIndex = 97, highestAsciiLetterIndex = 122;
 
 void openMainMenu();
+
+void printGivenLetters(char letters[])
+{
+    for (int i = 0; i < lettersPerRoundAmount; i++)
+    {
+        std::cout << letters[i] << " ";
+    }
+    std::cout << "\n";
+}
+
+bool wordContainsProvidedLettersOnly(std::string word, char letters[])
+{
+    bool letterIsGiven;
+    char lettersCopy[lettersPerRoundAmount];
+    strcpy(lettersCopy, letters);
+    for (int i = 0; i < word.length(); i++)
+    {
+        letterIsGiven = false;
+        for (int j = 0; j < lettersPerRoundAmount; j++)
+        {
+            if (lettersCopy[j] == word[i])
+            {
+                lettersCopy[j] = '0';
+                letterIsGiven = true;
+                break;
+            }
+        }
+
+        if (!letterIsGiven)
+        {
+            return false;
+        }
+    }
+    return true;
+}
 
 void printMenu()
 {
@@ -47,10 +85,6 @@ bool dictionaryContainsWord(std::string word)
 
     readDictionaryFile.close();
     return false;
-}
-
-void startGame()
-{
 }
 
 void changeLettersPerRoundAmount()
@@ -119,15 +153,49 @@ void addWordToDictionary()
     openMainMenu();
 }
 
+void startGame()
+{
+    int points = 0;
+    srand(time(0));
+
+    std::string word;
+    for (int currentRound = 1; currentRound <= roundsAmount; currentRound++)
+    {
+
+        char availableLettersArr[lettersPerRoundAmount];
+        std::cout << "\nRound " << currentRound << ". Available letters: ";
+        for (int i = 0; i < lettersPerRoundAmount; i++)
+        {
+
+            availableLettersArr[i] = (char)((rand() % (highestAsciiLetterIndex - lowestAsciiLetterIndex + 1)) + lowestAsciiLetterIndex);
+            std::cout << availableLettersArr[i] << " ";
+        }
+        std::cout << "\n";
+
+    input:
+        std::cin >> word;
+
+        if (wordContainsProvidedLettersOnly(word, availableLettersArr) && dictionaryContainsWord(word))
+        {
+            points += word.length();
+            std::cout << word << " is a valid word! Your points so far are: " << points << "\n";
+        }
+        else
+        {
+            std::cout << "Invalid word. Try again with: ";
+            printGivenLetters(availableLettersArr);
+            goto input;
+        }
+    }
+
+    std::cout << "Game over! Your total points are " << points << "." << std::endl
+              << "Returning to menu.";
+    openMainMenu();
+}
+
 void openMainMenu()
 {
     printMenu();
-}
-
-int main()
-{
-
-    openMainMenu();
 
     int menuOption;
     std::cin >> menuOption;
@@ -151,4 +219,9 @@ int main()
         handleIncorrectInput();
         break;
     }
+}
+
+int main()
+{
+    openMainMenu();
 }
