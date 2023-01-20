@@ -189,7 +189,7 @@ void startGame()
     }
 
     std::cout << "Game over! Your total points are " << points << "." << std::endl
-              << "Returning to menu."<<std::endl;
+              << "Returning to menu." << std::endl;
     openMainMenu();
 }
 
