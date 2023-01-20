@@ -5,6 +5,7 @@
 
 int lettersPerRoundAmount = 10, roundsAmount = 10;
 const int lowestAsciiLetterIndex = 97, highestAsciiLetterIndex = 122;
+const std::string dictionaryFilePath = "..\\resources\\dictionary.txt";
 
 void openMainMenu();
 
@@ -72,7 +73,7 @@ bool dictionaryContainsWord(std::string word)
 {
 
     std::fstream readDictionaryFile;
-    readDictionaryFile.open("dictionary.txt", std::fstream::in);
+    readDictionaryFile.open(dictionaryFilePath, std::fstream::in);
     std::string buffer;
     while (std::getline(readDictionaryFile, buffer))
     {
@@ -143,7 +144,7 @@ void handleIncorrectInput()
 void addWordToDictionary()
 {
     std::fstream addWordStream;
-    addWordStream.open("dictionary.txt", std::fstream::out | std::fstream::app);
+    addWordStream.open(dictionaryFilePath, std::fstream::out | std::fstream::app);
     std::cout << "Type a word to add to the dictionary: " << std::endl;
     std::string word;
     std::cin >> word;
@@ -174,7 +175,8 @@ void startGame()
 
     input:
         std::cin >> word;
-
+        std::cout<<(wordContainsProvidedLettersOnly(word, availableLettersArr) ? "contains provided letters" : "incorrect letters")<<std::endl;
+        std::cout<<(dictionaryContainsWord(word) ? "in dictionary" : "not in dictionary");
         if (wordContainsProvidedLettersOnly(word, availableLettersArr) && dictionaryContainsWord(word))
         {
             points += word.length();
