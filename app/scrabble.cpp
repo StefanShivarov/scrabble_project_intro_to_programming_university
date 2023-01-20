@@ -175,8 +175,6 @@ void startGame()
 
     input:
         std::cin >> word;
-        std::cout<<(wordContainsProvidedLettersOnly(word, availableLettersArr) ? "contains provided letters" : "incorrect letters")<<std::endl;
-        std::cout<<(dictionaryContainsWord(word) ? "in dictionary" : "not in dictionary");
         if (wordContainsProvidedLettersOnly(word, availableLettersArr) && dictionaryContainsWord(word))
         {
             points += word.length();
@@ -191,7 +189,7 @@ void startGame()
     }
 
     std::cout << "Game over! Your total points are " << points << "." << std::endl
-              << "Returning to menu.";
+              << "Returning to menu."<<std::endl;
     openMainMenu();
 }
 
