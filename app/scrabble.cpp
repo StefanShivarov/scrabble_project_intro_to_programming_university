@@ -1,3 +1,18 @@
+/**
+*  
+* Solution to course project # 8
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2022/2023
+*
+* @author Stefan Shivarov
+* @idnumber 9MI0600175
+* @compiler GCC
+*
+* file with complete project code
+*
+*/
+
 #include <iostream>
 #include <fstream>
 #include <time.h>
