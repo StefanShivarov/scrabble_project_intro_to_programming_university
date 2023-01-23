@@ -163,7 +163,7 @@ void addWordToDictionary()
     std::cout << "Type a word to add to the dictionary: " << std::endl;
     std::string word;
     std::cin >> word;
-    addWordStream << word << "\n";
+    addWordStream << "\n" << word;
     addWordStream.close();
     std::cout << word << " successfully added to dictionary! Back to main menu..." << std::endl;
     openMainMenu();
