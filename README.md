@@ -30,7 +30,7 @@ You can also add words in the dictionary by choosing option 3 from the main menu
 
 ## **Game**
 
-![Game screenshot](resources/screenshots/example_scrabble_game.png)
+![Game screenshot](resources/screenshots/examplescrabblegame.png)
 
 ---
 
